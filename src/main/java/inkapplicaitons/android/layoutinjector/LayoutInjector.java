@@ -14,8 +14,6 @@ import android.view.ViewGroup;
  */
 public class LayoutInjector
 {
-    public LayoutInjector() {}
-
     /**
      * Injects the content view into an activity based on the Layout annotation.
      *
@@ -24,7 +22,7 @@ public class LayoutInjector
      *
      * @param activity The activity to set the content view on
      */
-    public void injectContentView(Activity activity)
+    public static void injectContentView(Activity activity)
     {
         Layout annotation = activity.getClass().getAnnotation(Layout.class);
 
@@ -47,7 +45,7 @@ public class LayoutInjector
      * @throws LayoutNotSpecifiedException when the implementing class does not
      *         specify a Layout annotation.
      */
-    public View inflateContentView(
+    public static View inflateContentView(
         Fragment fragment,
         LayoutInflater inflater,
         ViewGroup container

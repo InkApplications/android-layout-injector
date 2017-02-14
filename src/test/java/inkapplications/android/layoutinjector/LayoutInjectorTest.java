@@ -16,10 +16,9 @@ public class LayoutInjectorTest {
     public void injectContentView() throws Exception {
         Activity mockActivity = Mockito.mock(Activity.class);
         TestLayoutActivity mockLayoutActivity = Mockito.mock(TestLayoutActivity.class);
-        LayoutInjector layoutInjector = new LayoutInjector();
 
-        layoutInjector.injectContentView(mockActivity);
-        layoutInjector.injectContentView(mockLayoutActivity);
+        LayoutInjector.injectContentView(mockActivity);
+        LayoutInjector.injectContentView(mockLayoutActivity);
 
         Mockito.verify(mockLayoutActivity, Mockito.times(1)).setContentView(42);
         Mockito.verify(mockActivity, Mockito.never()).setContentView(Mockito.anyInt());
@@ -30,9 +29,8 @@ public class LayoutInjectorTest {
         Fragment mockFragment = Mockito.mock(Fragment.class);
         LayoutInflater mockInflater = Mockito.mock(LayoutInflater.class);
         ViewGroup mockContainer = Mockito.mock(ViewGroup.class);
-        LayoutInjector layoutInjector = new LayoutInjector();
 
-        layoutInjector.inflateContentView(mockFragment, mockInflater, mockContainer);
+        LayoutInjector.inflateContentView(mockFragment, mockInflater, mockContainer);
     }
 
     @Test
@@ -42,9 +40,8 @@ public class LayoutInjectorTest {
         View mockView = Mockito.mock(View.class);
         LayoutInflater mockInflater = Mockito.mock(LayoutInflater.class);
         Mockito.when(mockInflater.inflate(42, mockContainer, false)).thenReturn(mockView);
-        LayoutInjector layoutInjector = new LayoutInjector();
 
-        View view = layoutInjector.inflateContentView(mockFragment, mockInflater, mockContainer);
+        View view = LayoutInjector.inflateContentView(mockFragment, mockInflater, mockContainer);
 
         assertSame(mockView, view);
         Mockito.verify(mockInflater, Mockito.times(1)).inflate(42, mockContainer, false);
