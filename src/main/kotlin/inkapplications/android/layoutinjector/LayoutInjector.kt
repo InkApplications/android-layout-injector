@@ -1,10 +1,10 @@
 package inkapplications.android.layoutinjector
 
 import android.app.Activity
-import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 
 /**
  * Injects the content view into an activity based on the Layout annotation.
@@ -12,7 +12,7 @@ import android.view.ViewGroup
  * If the activity does not contain a layout annotation, this method will
  * do nothing.
  *
- * @param activity The activity to set the content view on
+ * @receiver The activity to set the content view on
  */
 fun Activity.autoInjectContentView() {
     val annotation = javaClass.getAnnotation(AutoLayout::class.java) ?: return
@@ -29,7 +29,7 @@ fun Activity.autoInjectContentView() {
  * not attempt to return null. Typically, the exception should be handled
  * by returning the default call super, causing no effect.
  *
- * @param fragment The activity to set the content view on
+ * @receiver activity to set the content view on
  * @throws LayoutNotSpecifiedException when the implementing class does not
  * specify a Layout annotation.
  */
